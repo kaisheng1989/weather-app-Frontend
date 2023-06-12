@@ -26,7 +26,7 @@ function Weather() {
 
   const formatBackground = () => {
     if (!weather) return "from-blue-400 to-purple-800";
-    const threshold = units === "metric" ? 10 : 30;
+    const threshold = units === "metric" ? 10 : 70;
     if (weather.temp <= threshold) return "from-blue-400 to-purple-800";
 
     return "from-yellow-700 to-orange-700";
@@ -34,21 +34,21 @@ function Weather() {
 
   return (
     // Background of the main page - Top banner.
-    <div>
-      <div></div>
-    <div
-      className={`mx-auto max-w-screen-xl xl:max-xl:flex sm:min-sm:flex mt-4 py-5 px-32 bg-gradient-to-br from-blue-400 to-purple-800 h-fit shadow-xl shadow-gray-400 rounded-lg ${formatBackground()}`}
-    >
-      <TopButton setQuery={setQuery} />
-      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+    <div >
+      <div
+        className={`mx:auto 2xl:mx-auto py-10 px-32 h-full bg-gradient-to-br from-blue-400 to-purple-800 shadow-xl shadow-gray-400 ${formatBackground()}`}
+      >
+        <TopButton setQuery={setQuery} />
+        <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
-      {weather && <TimeAndLocation weather={weather} />}
+        {weather && <TimeAndLocation weather={weather} />}
 
-      {weather && <TemperatureAndDetails weather={weather} />}
+        {weather && <TemperatureAndDetails weather={weather} />}
 
-      {weather && <Forecast title="hourly forecast" items={weather.hourly} />}
-      {weather && <Forecast title="daily forecast" items={weather.daily} />}
-    </div>
+        {weather && <Forecast title="hourly forecast" items={weather.hourly} />}
+        {weather && <Forecast title="daily forecast" items={weather.daily} />}
+      </div>
+      
     </div>
   );
 }
