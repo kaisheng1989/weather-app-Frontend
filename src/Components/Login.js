@@ -5,7 +5,7 @@ function Login(props) {
   return (
     <div className="flex w-full h-screen">
       <div className="w-full flex items-center justify-center lg:w-1/2">
-        <Form login={props.login} />
+        <Form onLoginClick={props.login} />
       </div>
       {/*Taking full width in desktop and hidden when in mobile */}
       <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center bg-gray-200 ">

@@ -16,16 +16,20 @@ export default class Form extends React.Component {
   }
   // Excutes lgoin
   onLoginClick = () => {
-    this.props.login()
+    
     console.log(this.state);
     if (
       this.state.email === "kaisheng1989@gmail.com" &&
-      this.state.name === "kaisheng"
+      this.state.name === "kaisheng"&&
+      this.props.onLoginClick()
     ) {
       // sucess
       this.setState({
         message: <span className="text-green-500">Sucessfully Login-in</span>,
-      })
+        
+      }
+      
+      )
       
     } else {
       this.setState({
