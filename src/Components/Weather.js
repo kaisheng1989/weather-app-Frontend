@@ -31,6 +31,8 @@ function Weather() {
     fetchWeather();
   }, [query, units]);
 
+  // ... query allows a copy of an object using spread operator. Instead of using the old method with the need to use Object.assign.
+
   const formatBackground = () => {
     if (!weather) return "from-blue-400 to-purple-800";
     const threshold = units === "metric" ? 10 : 70;
