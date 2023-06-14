@@ -4,6 +4,7 @@ import React from "react";
 //const navigate = {useNavigate};
 
 //Creating a two way binding.
+// Where input on the text bar can be capture and autenticated. 
 export default class Form extends React.Component {
   // Capture the value.
   constructor(props) {
@@ -14,7 +15,7 @@ export default class Form extends React.Component {
       message: "",
     };
   }
-  // Excutes lgoin
+  // Excutes login
   onLoginClick = () => {
     
     console.log(this.state);
@@ -35,7 +36,7 @@ export default class Form extends React.Component {
       this.setState({
         message: (
           <span className="text-red-600">
-            Invalid Login, PLease try again.
+            Invalid Login, Pl99ease try again.
           </span>
         ),
       });

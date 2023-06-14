@@ -8,10 +8,11 @@ function Inputs({ setQuery, units, setUnits }) {
     const selectedUnit = e.currentTarget.name;
     if (units !== selectedUnit) setUnits(selectedUnit);
   };
-
+// This porton handle the search query when a city is key in. 
   const handleSearchClick = () => {
     if (city !== "") setQuery({ q: city });
   };
+  // This portion handle the location icon where on click it will retreive the lon and lat of the location the user is based and provide the weather. 
   const handleLocationClick = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Weather from "./Weather";
 import Login from "./Login";
 
+// Component for conditional rendering. Setting the conditions to decide which site will apppear first.  
+
  export default class Greeting extends Component {
   constructor(props) {
     super(props)

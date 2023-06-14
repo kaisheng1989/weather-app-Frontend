@@ -9,6 +9,7 @@ import getFormattedWeatherData from "../services/Weatherservices";
 //import UilReact from "@iconscout/react-unicons/icons/uil-react";
 
 function Weather() {
+  //Setting the state for the respective elements. 
   const [query, setQuery] = useState({ q: "singapore" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
@@ -34,13 +35,15 @@ function Weather() {
 
   return (
     // Background of the main page - Top banner.
+    // Layout of the weather and process in which how it is going to be render. 
+
     <div >
       <div
         className={`mx:auto 2xl:mx-auto py-10 px-32 h-full bg-gradient-to-br from-blue-400 to-purple-800 shadow-xl shadow-gray-400 ${formatBackground()}`}
       >
         <TopButton setQuery={setQuery} />
         <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
-
+        {/*Only when weather is there, the below few componenets will be loaded.  */}
         {weather && <TimeAndLocation weather={weather} />}
 
         {weather && <TemperatureAndDetails weather={weather} />}

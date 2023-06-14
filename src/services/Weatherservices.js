@@ -4,6 +4,8 @@ import { DateTime } from "luxon";
 const API_KEY = "c23baa98634849d26b581a51bdde4abd";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
+
+// Get the weather through URL and API key generated. 
 const getWeatherData = (infoType, searchParams) => {
   const url = new URL(BASE_URL + "/" + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
@@ -12,9 +14,10 @@ const getWeatherData = (infoType, searchParams) => {
   //.then((data) => data);
 };
 
-// Format the weather data.
+// Format the weather data taken from open weather. 
 // What data we need. dt is a UTC time stamp
 // get the first element in the weather array.
+// dt is a time stamp in UTC. 
 const formatCurrentWeather = (data) => {
   const {
     coord: { lat, lon },
@@ -25,6 +28,8 @@ const formatCurrentWeather = (data) => {
     weather,
     wind: { speed },
   } = data;
+  // In weather, only details and icons are needed. 
+  // Icon is given in a numbering format.
   const { main: details, icon } = weather[0];
   return {
     lat,
@@ -45,6 +50,9 @@ const formatCurrentWeather = (data) => {
   };
 };
 
+// The data retrieved from open weather API. For hourly data it is in an array. To get data from the poiint of query and hourly slice the array bewteen ( 1 to 6) data for the next 5 hours. 
+// In daily, the info will be reformatted to ccc so that instead of a string of digits, it will be converted to the respective day. 
+
 const formatForecastWeather = (data) => {
   let { timezone, daily, hourly } = data;
   daily = daily.slice(1, 6).map((d) => {
@@ -64,6 +72,7 @@ const formatForecastWeather = (data) => {
   return { timezone, daily, hourly };
 };
 
+// Getting the weather data from the open weather and pass it through the formatted weather data to be formatted / Constructed into a manner readable. Use that it can be pluck and use directly. 
 const getFormattedWeatherData = async (searchParams) => {
   const formattedCurrentWeather = await getWeatherData(
     "weather",
@@ -71,7 +80,9 @@ const getFormattedWeatherData = async (searchParams) => {
   ).then(formatCurrentWeather);
 
   // format weather with one call api
-
+ //ONe call API provides the hourly and daily info. 
+ // The API for one call will exclude minutes data, current weather and alerts as they are not needed. 
+ // The response will go into format forcast weather. 
   const { lat, lon } = formattedCurrentWeather;
 
   const formattedForecastWeather = await getWeatherData("onecall", {
@@ -93,10 +104,11 @@ const formatToLocalTime = (
 
 
 // Function for ICON
+// Icon is change from or retreive from a certain code type. 
 const iconUrlFromCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;
 
 
-
+// Will export not only the formatted weather data but also the time zone format and Icon from URL 
 
 export default getFormattedWeatherData;
 export{formatToLocalTime, iconUrlFromCode};

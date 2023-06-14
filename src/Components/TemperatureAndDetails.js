@@ -62,6 +62,7 @@ function TemperatureAndDetails({
         </div>
       </div>
       {/*New Section */}
+      {/* The time data for sun rise is taken from the open weather API. Then it will pass into Luxon to be reformatted to HH,MM a */}
       <div className="flex flex-row items-start justify-center space-x-2 text-white py-8 text-base">
         {/*Column 1 */}
         <UilSun />
