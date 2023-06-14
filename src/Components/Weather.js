@@ -14,6 +14,10 @@ function Weather() {
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
+//(1) By use useState Hook, it prevent the need for using the.setState. ABle to make chnages to the state without having to convert to a class. Instead having to write setState, it can be made clearer by coding by show what is the state of element we are setting.
+
+//(2) UseEffect hook: Instead of using lifecycle method which need to be written twice. UseEffect allows a function to be callled after rendering is complete.  It allows the weather to be query after rendering is complete. 
+
   // each time a chnage in units or query of country fetch new data.
   useEffect(() => {
     const fetchWeather = async () => {
