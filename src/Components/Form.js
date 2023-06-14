@@ -36,7 +36,7 @@ export default class Form extends React.Component {
       this.setState({
         message: (
           <span className="text-red-600">
-            Invalid Login, Pl99ease try again.
+            Invalid Login, Please try again.
           </span>
         ),
       });
