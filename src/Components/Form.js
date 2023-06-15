@@ -5,6 +5,7 @@ import React from "react";
 
 //Creating a two way binding.
 // Where input on the text bar can be capture and autenticated. 
+
 export default class Form extends React.Component {
   // Capture the value.
   constructor(props) {
@@ -15,10 +16,11 @@ export default class Form extends React.Component {
       message: "",
     };
   }
+  
   // Excutes login
   onLoginClick = () => {
     
-    console.log(this.state);
+    
     if (
       this.state.email === "kaisheng1989@gmail.com" &&
       this.state.name === "kaisheng"&&
@@ -42,6 +44,7 @@ export default class Form extends React.Component {
       });
     }
   };
+  
   render() {
     return (
       <div className="bg-white px-10 py-7 rounded-3xl border-2 border-purple-800">
@@ -95,4 +98,5 @@ export default class Form extends React.Component {
       </div>
     );
   }
+   
 }

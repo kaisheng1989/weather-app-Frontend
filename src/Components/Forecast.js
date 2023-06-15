@@ -2,7 +2,7 @@ import React from 'react'
 import { iconUrlFromCode } from "../services/Weatherservices";
 
 function Forecast({ title, items }) {
-  console.log(items);
+  console.log("Forecast of next 5 hours and days",items);
   return (
     <div>
       {/*mt -6 margin top by 6 px */}

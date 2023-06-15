@@ -4,18 +4,20 @@ import { DateTime } from "luxon";
 const API_KEY = "c23baa98634849d26b581a51bdde4abd";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
-
+// Here a process of formatting the data so that it can be retrieve by the forecast compoenent.
 // Get the weather through URL and API key generated. 
 const getWeatherData = (infoType, searchParams) => {
   const url = new URL(BASE_URL + "/" + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
   //console.log(url);
   return fetch(url).then((res) => res.json());
-  //.then((data) => data);
+  
 };
+// Getting URL from open weather once query is done. 
+//console.log("URL",getWeatherData());
 
 // Format the weather data taken from open weather. 
-// What data we need. dt is a UTC time stamp
+// What data we need. 
 // get the first element in the weather array.
 // dt is a time stamp in UTC. 
 const formatCurrentWeather = (data) => {
@@ -50,6 +52,7 @@ const formatCurrentWeather = (data) => {
   };
 };
 
+
 // The data retrieved from open weather API. For hourly data it is in an array. To get data from the poiint of query and hourly slice the array bewteen ( 1 to 6) data for the next 5 hours. 
 // In daily, the info will be reformatted to ccc so that instead of a string of digits, it will be converted to the respective day. 
 
@@ -71,6 +74,7 @@ const formatForecastWeather = (data) => {
   });
   return { timezone, daily, hourly };
 };
+
 
 // Getting the weather data from the open weather and pass it through the formatted weather data to be formatted / Constructed into a manner readable. Use that it can be pluck and use directly. 
 const getFormattedWeatherData = async (searchParams) => {
